@@ -1,24 +1,23 @@
 let bookCollection = [];
 let newBook = null;
-let addNewBook = null;
 
 const updateLocalStorage = () => {
   localStorage.setItem('bookCollection', JSON.stringify(bookCollection));
-}
+};
 
 const removeBook = (bookId, storeBooks) => {
-  const book = document.getElementById(`${bookId}`)
+  const book = document.getElementById(`${bookId}`);
   storeBooks.removeChild(book);
-  bookCollection = bookCollection.filter(Object => Object.id != bookId);
+  bookCollection = bookCollection.filter((Object) => Object.id !== bookId);
   updateLocalStorage();
-}
+};
 
 const addBook = (title, author) => {
   const newBook = {
     id: String(bookCollection.length),
     title,
-    author
-  }
+    author,
+  };
   bookCollection.push(newBook);
   const storeBooks = document.querySelector('#storeBooks');
   const bookForm = document.createElement('form');
@@ -43,11 +42,10 @@ const addBook = (title, author) => {
     removeBook(newBook.id, storeBooks);
   });
   updateLocalStorage();
-}
+};
 
 document.addEventListener('DOMContentLoaded', () => {
   newBook = document.querySelector('#newBook');
-  addNewBook = newBook.querySelector('#addBook');
   newBook.addEventListener('submit', (event) => {
     event.preventDefault();
     const title = newBook.elements[0].value;
@@ -65,7 +63,5 @@ document.addEventListener('DOMContentLoaded', () => {
     bookData.forEach((book) => {
       addBook(book.title, book.author);
     });
-
   }
 });
-
