@@ -1,11 +1,18 @@
 let bookCollection = [];
 let newBook = null;
 let addNewBook = null;
+
+const updateLocalStorage = () => {
+  localStorage.setItem('bookCollection', JSON.stringify(bookCollection));
+}
+
 const removeBook = (bookId, storeBooks) => {
   const book = document.getElementById(`${bookId}`)
   storeBooks.removeChild(book);
   bookCollection = bookCollection.filter(Object => Object.id != bookId);
+  updateLocalStorage();
 }
+
 const addBook = (title, author) => {
   const newBook = {
     id: String(bookCollection.length),
@@ -35,17 +42,30 @@ const addBook = (title, author) => {
     event.preventDefault();
     removeBook(newBook.id, storeBooks);
   });
+  updateLocalStorage();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   newBook = document.querySelector('#newBook');
   addNewBook = newBook.querySelector('#addBook');
-  console.log(newBook, addNewBook);
   newBook.addEventListener('submit', (event) => {
     event.preventDefault();
     const title = newBook.elements[0].value;
     const author = newBook.elements[1].value;
     addBook(title, author);
-  })
+  });
+  if (!localStorage.getItem('bookCollection')) {
+    try {
+      localStorage.setItem('bookCollection', JSON.stringify([]));
+    } catch (exc) {
+      console.log('can create local storage');
+    }
+  } else {
+    const bookData = JSON.parse(localStorage.getItem('bookCollection'));
+    bookData.forEach((book) => {
+      addBook(book.title, book.author);
+    });
+
+  }
 });
 
