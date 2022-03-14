@@ -51,6 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const title = newBook.elements[0].value;
     const author = newBook.elements[1].value;
     addBook(title, author);
+    newBook.elements[0].value = '';
+    newBook.elements[1].value = '';
   });
   if (!localStorage.getItem('bookCollection')) {
     try {
