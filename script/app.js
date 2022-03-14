@@ -1,9 +1,10 @@
-const bookCollection = [];
+let bookCollection = [];
 let newBook = null;
 let addNewBook = null;
 const removeBook = (bookId, storeBooks) => {
   const book = document.getElementById(`${bookId}`)
   storeBooks.removeChild(book);
+  bookCollection = bookCollection.filter(Object => Object.id != bookId);
 }
 const addBook = (title, author) => {
   const newBook = {
@@ -31,10 +32,9 @@ const addBook = (title, author) => {
   bookForm.appendChild(separator);
   storeBooks.appendChild(bookForm);
   bookForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        removeBook(newBook.id, storeBooks);
-    })
-  console.log(bookCollection);
+    event.preventDefault();
+    removeBook(newBook.id, storeBooks);
+  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
