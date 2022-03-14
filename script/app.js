@@ -1,9 +1,13 @@
 const bookCollection = [];
 let newBook = null;
 let addNewBook = null;
+const removeBook = (bookId, storeBooks) => {
+  const book = document.getElementById(`${bookId}`)
+  storeBooks.removeChild(book);
+}
 const addBook = (title, author) => {
   const newBook = {
-    id: bookCollection.length,
+    id: String(bookCollection.length),
     title,
     author
   }
@@ -19,15 +23,20 @@ const addBook = (title, author) => {
   authorContainer.textContent = newBook.author;
   const removeButton = document.createElement('button');
   const separator = document.createElement('hr');
-  removeButton.setAttribute('id', 'remove');
+  removeButton.setAttribute('class', 'remove');
   removeButton.textContent = 'Remove';
   bookForm.appendChild(titleContainer);
   bookForm.appendChild(authorContainer);
   bookForm.appendChild(removeButton);
   bookForm.appendChild(separator);
   storeBooks.appendChild(bookForm);
+  bookForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        removeBook(newBook.id, storeBooks);
+    })
   console.log(bookCollection);
 }
+
 document.addEventListener('DOMContentLoaded', () => {
   newBook = document.querySelector('#newBook');
   addNewBook = newBook.querySelector('#addBook');
@@ -39,3 +48,4 @@ document.addEventListener('DOMContentLoaded', () => {
     addBook(title, author);
   })
 });
+
