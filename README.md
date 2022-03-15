@@ -12,14 +12,16 @@
 ## Live Demo
 
 [Go Live](https://tadesse-alemayehu.github.io/Awesome-books/) 🙂
-
-
+ 
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
 
-### simply clone the main branch.
-** clone the main branch. create a new base branch and work from there**
+1. Git clone git@github.com:Tadesse-Alemayehu/Awesome-books.git
+
+2. Cd Awesome-books
+
+3. Open index.html file with web browser software
 
 ## Authors
 
