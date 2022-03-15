@@ -6,8 +6,20 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+.main-text {
+  background-image: url(https://media.istockphoto.com/photos/row-of-old-books-with-colorful-covers-on-pastel-blue-background-up-picture-id1126130554?k=20&m=1126130554&s=170667a&w=0&h=Cd53gRKlpQ4WrNSZhrSQM4WO88u0czDoz8ZP7Fwk-kQ=);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 2px solid red;
+  width: 50%;
+  margin: auto;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
 #main-header-text {
-  color: red;
+  color: black;
   text-align: center;
 }
 
@@ -23,6 +35,29 @@ body {
   padding: 10px;
 }
 
+.minus-icon {
+  width: 100%;
+  text-align: center;
+}
+
 .new-book-section {
   text-align: center;
+  border: 2px solid black;
+  width: 50%;
+  margin: auto;
+  padding: 10px;
+  background-color: #bdfff6;
+  color: #e23c52;
+}
+
+.new-book-text {
+  color: #000;
+}
+
+#addBook {
+  background-color: #bdfff6;
+  color: #e23c52;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 8px;
 }
