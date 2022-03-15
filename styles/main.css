@@ -3,4 +3,26 @@ html,
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+#main-header-text {
+  color: red;
+  text-align: center;
+}
+
+.book-icon {
+  width: 100%;
+  text-align: center;
+}
+
+#storeBooks {
+  border: 2px solid black;
+  width: 50%;
+  margin: auto;
+  padding: 10px;
+}
+
+.new-book-section {
+  text-align: center;
 }

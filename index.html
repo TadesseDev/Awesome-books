@@ -5,9 +5,26 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Awesome books</title>
+
+  <!-- Font Awesome API -->
+  <script src="https://kit.fontawesome.com/030a66e167.js" crossorigin="anonymous"></script>
+  <!-- Font Awesome API -->
+
+  <!-- google fonts Poppins API  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <!-- google fonts Poppins API  -->
+
+  <!-- Css Stylesheet  -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- Css Stylesheet -->
+
 </head>
 <body>
-  <h1> Awesome Books</h1>
+  <h1 id="main-header-text"> All awesome books</h1>
+  <i class="fa-solid fa-book book-icon"></i>
+
 <!-- Database of all the books starts here -->
   <section id="storeBooks">
   </section>
@@ -15,11 +32,15 @@
 
 <!-- Title and Author section starts here  -->
 <br>
+<section class="new-book-section"> 
+  <h2 class="new-book-text"> Add a New Book</h2>
+  <i class="fa-solid fa-book-open book-icon"></i>
 <form action="#" id="newBook">
   <input type="text" id="title" name="title" placeholder="Title" required minlength="2" maxlength="100"><br><br>
   <input type="text" id="author" name="author" placeholder="Author" required minlength="2" maxlength="100"><br><br>
   <button type="submit" id="addBook">Add</button>
 </form>
+</section>
 <!-- Title and Author section ends here -->
 
 <script src="script/app.js"></script>
