@@ -21,6 +21,8 @@ class book {
     this.title = title;
     this.author = author;
     this.id = String(Date.now());
+    this.addBook(); // add book to Book list
+    this.addBookToDom(); //append book to the DOM
   }
   addBook() {
     ManageBooks.addBookToList(this);
@@ -68,14 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
   newBook = document.querySelector('#newBook');
   newBook.addEventListener('submit', (event) => {
     event.preventDefault();
-
     const title = event.target.elements[0].value;
     const author = event.target.elements[1].value;
     const newBook = new book(title, author);
-
-    newBook.addBook(); // add book to Book list
-    newBook.addBookToDom(); //append book to the DOM
-
     event.target.elements[0].value = '';
     event.target.elements[1].value = '';
   });
@@ -89,8 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const bookData = JSON.parse(localStorage.getItem('bookCollection'));
     bookData.forEach((bookData) => {
       const newBook = new book(bookData.title, bookData.author);
-      newBook.addBook();
-      newBook.addBookToDom();
       console.log(ManageBooks.listOfBook);
     });
   }
