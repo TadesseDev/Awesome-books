@@ -7,11 +7,11 @@ body {
 }
 
 .main-text {
-  background-image: url(https://media.istockphoto.com/photos/row-of-old-books-with-colorful-covers-on-pastel-blue-background-up-picture-id1126130554?k=20&m=1126130554&s=170667a&w=0&h=Cd53gRKlpQ4WrNSZhrSQM4WO88u0czDoz8ZP7Fwk-kQ=);
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKq4LrGopvu6bwW3lN6mjU-SjBLASeIEk4Ew&usqp=CAU);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  border: 2px solid red;
+  border: 2px solid #000;
   width: 50%;
   margin: auto;
   padding: 10px;
@@ -21,6 +21,7 @@ body {
 #main-header-text {
   color: black;
   text-align: center;
+  padding-left: 50px;
 }
 
 .book-icon {
@@ -33,6 +34,10 @@ body {
   width: 50%;
   margin: auto;
   padding: 10px;
+}
+
+.minus-icon-container {
+  text-align: center;
 }
 
 .minus-icon {
