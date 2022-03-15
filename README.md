@@ -11,7 +11,7 @@
 
 ## Live Demo
 
-[comming soon]() 🙂
+[Go Live](https://tadesse-alemayehu.github.io/Awesome-books/) 🙂
 
 
 ## Getting Started
