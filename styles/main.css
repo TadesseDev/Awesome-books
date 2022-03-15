@@ -7,11 +7,6 @@ body {
 }
 
 .main-text {
-  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKq4LrGopvu6bwW3lN6mjU-SjBLASeIEk4Ew&usqp=CAU);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  border: 2px solid #000;
   width: 50%;
   margin: auto;
   padding: 10px;
@@ -47,12 +42,27 @@ body {
 
 .new-book-section {
   text-align: center;
-  border: 2px solid black;
   width: 50%;
   margin: auto;
   padding: 10px;
-  background-color: #bdfff6;
   color: #e23c52;
+}
+
+#newBook {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.new-book-section input {
+  min-width: 70%;
+  margin: 10px auto;
+  height: 25px;
+}
+
+.new-book-section button {
+  margin-right: 15%;
+  align-self: flex-end;
 }
 
 .new-book-text {
@@ -60,9 +70,32 @@ body {
 }
 
 #addBook {
-  background-color: #bdfff6;
-  color: #e23c52;
+  background-color: white;
+  color: #000;
   font-size: 20px;
   font-weight: bold;
   border-radius: 8px;
+}
+
+#storeBooks form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  padding: 5px;
+}
+
+#storeBooks form:nth-child(odd) {
+  background-color: silver;
+}
+
+#storeBooks form p {
+  margin: 5px;
+}
+
+hr {
+  max-width: 30%;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
