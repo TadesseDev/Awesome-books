@@ -1,69 +1,85 @@
-let bookCollection = [];
-let newBook = null;
+// every book isInstance of a book class;
+class MyBook {
+  static listOfBook = [];
 
-const updateLocalStorage = () => {
-  localStorage.setItem('bookCollection', JSON.stringify(bookCollection));
-};
+  static {
+    this.updateLocalStorage = () => {
+      localStorage.setItem('bookCollection', JSON.stringify(MyBook.listOfBook));
+    };
+    this.addBookToList = (book) => {
+      this.listOfBook.push(book);
+      this.updateLocalStorage();
+    };
+    this.removeBookFomList = (bookToRemove) => {
+      this.listOfBook = this.listOfBook.filter((book) => book.id !== bookToRemove.id);
+      this.updateLocalStorage();
+    };
+  }
 
-const removeBook = (bookId, storeBooks) => {
-  const book = document.getElementById(`${bookId}`);
-  storeBooks.removeChild(book);
-  bookCollection = bookCollection.filter((Object) => Object.id !== bookId);
-  updateLocalStorage();
-};
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
+    this.id = String(Date.now());
+    this.addBook(); // add book to Book list
+  }
 
-const addBook = (title, author) => {
-  const newBook = {
-    id: String(bookCollection.length),
-    title,
-    author,
+  addBook() {
+    MyBook.addBookToList(this);
+  }
+
+  removeBook() {
+    MyBook.removeBookFomList(this);
+  }
+
+  addBookToDom = () => {
+    const storeBooks = document.querySelector('#storeBooks');
+    const bookForm = document.createElement('form');
+    bookForm.setAttribute('id', this.id);
+    const titleContainer = document.createElement('p');
+    titleContainer.classList.add('title-author');
+    titleContainer.textContent = String(`"${this.title}"`) + String(' by ') + String(`${this.author}`);
+    const removeButton = document.createElement('button');
+    removeButton.setAttribute('class', 'remove');
+    removeButton.textContent = 'Remove';
+    bookForm.appendChild(titleContainer);
+    bookForm.appendChild(removeButton);
+    storeBooks.appendChild(bookForm);
+    bookForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      this.removeBook();
+      this.removeBookFromDom(storeBooks);
+    });
+    MyBook.updateLocalStorage(this);
   };
-  bookCollection.push(newBook);
-  const storeBooks = document.querySelector('#storeBooks');
-  const bookForm = document.createElement('form');
-  bookForm.setAttribute('id', newBook.id);
-  const titleContainer = document.createElement('p');
-  titleContainer.classList.add('title');
-  titleContainer.textContent = newBook.title;
-  const authorContainer = document.createElement('p');
-  authorContainer.classList.add('author');
-  authorContainer.textContent = newBook.author;
-  const removeButton = document.createElement('button');
-  const separator = document.createElement('hr');
-  removeButton.setAttribute('class', 'remove');
-  removeButton.textContent = 'Remove';
-  bookForm.appendChild(titleContainer);
-  bookForm.appendChild(authorContainer);
-  bookForm.appendChild(removeButton);
-  bookForm.appendChild(separator);
-  storeBooks.appendChild(bookForm);
-  bookForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    removeBook(newBook.id, storeBooks);
-  });
-  updateLocalStorage();
-};
+
+  removeBookFromDom = (storeBooks) => {
+    const book = document.getElementById(`${this.id}`);
+    storeBooks.removeChild(book);
+  };
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-  newBook = document.querySelector('#newBook');
+  const newBook = document.querySelector('#newBook');
   newBook.addEventListener('submit', (event) => {
     event.preventDefault();
-    const title = newBook.elements[0].value;
-    const author = newBook.elements[1].value;
-    addBook(title, author);
-    newBook.elements[0].value = '';
-    newBook.elements[1].value = '';
+    const title = event.target.elements[0].value;
+    const author = event.target.elements[1].value;
+    const myNewBook = new MyBook(title, author);
+    myNewBook.addBookToDom(); // append book to the DOM
+    event.target.elements[0].value = '';
+    event.target.elements[1].value = '';
   });
   if (!localStorage.getItem('bookCollection')) {
     try {
       localStorage.setItem('bookCollection', JSON.stringify([]));
     } catch (exc) {
-      console.log('can create local storage');
+      console.log('failed to create local storage');
     }
   } else {
     const bookData = JSON.parse(localStorage.getItem('bookCollection'));
-    bookData.forEach((book) => {
-      addBook(book.title, book.author);
+    bookData.forEach((bookData) => {
+      const newBook = new MyBook(bookData.title, bookData.author);
+      newBook.addBookToDom(); // append book to the DOM
     });
   }
 });
