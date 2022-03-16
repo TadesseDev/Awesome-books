@@ -44,6 +44,7 @@ body {
   margin-left: 10px;
   margin-right: 10px;
 }
+
 /* .....................................navbar section styles ends here .................................................. */
 
 /* .....................................List of books section styling starts here........................................  */
@@ -59,9 +60,11 @@ body {
   text-align: center;
   padding-left: 50px;
 }
+
 /* ........................................List of books section styling ends here................................................... */
 
-/* ........................................Database of all the books styling starts here ............................................*/
+/* ........................................Database of all the books styling starts here ............................................ */
+
 #storeBooks {
   border: 2px solid black;
   width: 50%;
@@ -84,6 +87,7 @@ body {
 #storeBooks form p {
   margin: 5px;
 }
+
 /* .........................................Database of all the books styling ends here............................................ */
 
 /* .........................................Add New Book Section styling starts here...................................................... */
@@ -114,6 +118,7 @@ body {
 
 .new-book-text {
   color: #000;
+  text-align: center;
 }
 
 #addBook {
@@ -123,33 +128,36 @@ body {
   font-weight: bold;
   border-radius: 8px;
 }
+
 /* .........................................Add New Book Section styling ends here...................................................... */
 
 /* .........................................contact information section styling starts here........................................... */
 #contact-info {
-  margin-top: 40px;
-  margin-left: 50px;
-  margin-right: 50px;
+  max-width: 500px;
+  margin: auto;
 }
 
 #contact-info-title {
   text-align: center;
   margin-bottom: 50px;
 }
-/* ..........................................contact information section styling starts here...........................................*/
+
+/* ..........................................contact information section styling ends here........................................... */
 
 /* ..........................................the footer section style starts here.................................................... */
 footer {
   border: 2px solid black;
-  margin-top: 100px;
-  margin-left: 10px;
-  margin-right: 10px;
   padding-left: 20px;
-  margin-bottom: 20px;
+  position: fixed;
+  bottom: 0.1px;
+  left: 10px;
+  right: 10px;
+  margin-bottom: 10px;
 }
 
 #footer-text {
   margin-bottom: 5px;
   margin-top: 5px;
 }
+
 /* ..................................................the footer section style starts here.................................. */

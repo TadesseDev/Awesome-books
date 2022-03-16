@@ -1,7 +1,9 @@
 // every book isInstance of a book class;
 class MyBook {
   static listOfBook = [];
+
   static unRender = [];
+
   static {
     this.updateLocalStorage = () => {
       localStorage.setItem('bookCollection', JSON.stringify(MyBook.listOfBook));
@@ -13,7 +15,7 @@ class MyBook {
     this.removeBookFomList = (bookToRemove) => {
       this.listOfBook = this.listOfBook.filter((book) => {
         console.log(book.title);
-        return book.id !== bookToRemove.id
+        return book.id !== bookToRemove.id;
       });
       this.updateLocalStorage();
     };
@@ -67,11 +69,11 @@ const updateBookList = () => {
     const newBook = new MyBook(bookData.title, bookData.author, bookData.id);
     newBook.addBookToDom(); // append book to the DOM
   });
-}
+};
 
 const addNewBookEvent = () => {
   try {
-    let newBook = document.querySelector('#newBook');
+    const newBook = document.querySelector('#newBook');
     console.log(newBook);
     newBook.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -83,9 +85,9 @@ const addNewBookEvent = () => {
       event.target.elements[1].value = '';
     });
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
-}
+};
 document.addEventListener('DOMContentLoaded', () => {
   if (!localStorage.getItem('bookCollection')) {
     try {

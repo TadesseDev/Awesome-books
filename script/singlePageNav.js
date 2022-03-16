@@ -13,12 +13,12 @@ const swapSection = (section) => {
   if (section === addBook) {
     addNewBookEvent();
   } else if (section === ListOfBooks && MyBook.unRender.length > 0) {
-    MyBook.unRender.forEach(book => {
+    MyBook.unRender.forEach((book) => {
       book.addBookToDom();
     });
     MyBook.unRender = [];
   }
-}
+};
 
 const getNewBookSection = () => {
   const newBookSection = document.createElement('section');
@@ -29,9 +29,9 @@ const getNewBookSection = () => {
       <input type="text" id="title" name="title" placeholder="Title" required minlength="2" maxlength="100">
         <input type="text" id="author" name="author" placeholder="Author" required minlength="2" maxlength="100">
           <button type="submit" id="addBook">Add</button>
-        </form>`
+        </form>`;
   return newBookSection;
-}
+};
 
 const getContactInfo = () => {
   const contactInfoSection = document.createElement('section');
@@ -40,13 +40,13 @@ const getContactInfo = () => {
 <h2 id="contact-info-title">Contact Information</h2>
 <p>Do you have any questions or you just want to say "Hello"? <br> You can reach out to us!</p>
 <ul>
-  <li>Our e-mail: mail@mail.com</li>
-  <li>Our phone number: 0043586534422</li>
+  <li>Our e-mail: email24t@gmail.com</li>
+  <li>Our phone number: +251921577930</li>
   <li>Our address: Streetname 22, 84503 City, Country</li>
 </ul>
 `;
   return contactInfoSection;
-}
+};
 
 document.addEventListener('DOMContentLoaded', () => {
   body = document.querySelector('body');
@@ -56,15 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
   addBook = getNewBookSection();
   contactInfo = getContactInfo();
   const navLinks = nav.querySelectorAll('a');
-  for (let link of navLinks)
+  for (const link of navLinks) {
     link.addEventListener('click', (event) => {
-      let sectionName = link.getAttribute('href').replace('#', '');
-      if (sectionName === 'ListOfBooks')
-        swapSection(ListOfBooks);
-      else if (sectionName === 'addBook')
-        swapSection(addBook);
-      else
-        swapSection(contactInfo);
+      const sectionName = link.getAttribute('href').replace('#', '');
+      if (sectionName === 'ListOfBooks') { swapSection(ListOfBooks); } else if (sectionName === 'addBook') { swapSection(addBook); } else { swapSection(contactInfo); }
     });
-    // console.log(link.getAttribute('href').replace('#', ''));
+  }
+  // console.log(link.getAttribute('href').replace('#', ''));
 });
