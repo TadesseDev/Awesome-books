@@ -6,7 +6,7 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-/* navbar section styles starts here  */
+/* ..................................................navbar section styles starts here ..................................... */
 #navbar-container {
   border: 2px solid #000;
   margin: 10px;
@@ -44,10 +44,9 @@ body {
   margin-left: 10px;
   margin-right: 10px;
 }
+/* .....................................navbar section styles ends here .................................................. */
 
-/* navbar section styles ends here  */
-
-
+/* .....................................List of books section styling starts here........................................  */
 .main-text {
   width: 50%;
   margin: auto;
@@ -60,12 +59,9 @@ body {
   text-align: center;
   padding-left: 50px;
 }
+/* ........................................List of books section styling ends here................................................... */
 
-.book-icon {
-  width: 100%;
-  text-align: center;
-}
-
+/* ........................................Database of all the books styling starts here ............................................*/
 #storeBooks {
   border: 2px solid black;
   width: 50%;
@@ -73,15 +69,24 @@ body {
   padding: 10px;
 }
 
-.minus-icon-container {
-  text-align: center;
+#storeBooks form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  padding: 5px;
 }
 
-.minus-icon {
-  width: 100%;
-  text-align: center;
+#storeBooks form:nth-child(odd) {
+  background-color: silver;
 }
 
+#storeBooks form p {
+  margin: 5px;
+}
+/* .........................................Database of all the books styling ends here............................................ */
+
+/* .........................................Add New Book Section styling starts here...................................................... */
 .new-book-section {
   text-align: center;
   width: 50%;
@@ -118,20 +123,23 @@ body {
   font-weight: bold;
   border-radius: 8px;
 }
+/* .........................................Add New Book Section styling ends here...................................................... */
 
-#storeBooks form {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: bold;
-  padding: 5px;
+/* .........................................contact information section styling starts here........................................... */
+#contact-info {
+
+}
+/* ..........................................contact information section styling starts here...........................................*/
+
+/* ..........................................the footer section style starts here.................................................... */
+footer {
+  border: 2px solid black;
+  margin: 10px;
+  padding-left: 20px;
 }
 
-#storeBooks form:nth-child(odd) {
-  background-color: silver;
+#footer-text {
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
-
-#storeBooks form p {
-  margin: 5px;
-}
-
+/* ..................................................the footer section style starts here.................................. */
