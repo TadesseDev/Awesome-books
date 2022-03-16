@@ -7,7 +7,7 @@ body {
 }
 
 /* navbar section styles starts here  */
-.navbar-container {
+#navbar-container {
   border: 2px solid #000;
   margin: 10px;
   display: flex;
@@ -76,13 +76,13 @@ body {
   flex-wrap: wrap;
 }
 
-.new-book-section input {
+#new-book-section input {
   min-width: 70%;
   margin: 10px auto;
   height: 25px;
 }
 
-.new-book-section button {
+#new-book-section button {
   margin-right: 15%;
   align-self: flex-end;
 }
