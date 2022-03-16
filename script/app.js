@@ -1,7 +1,7 @@
 // every book isInstance of a book class;
 class MyBook {
   static listOfBook = [];
-
+  static unRender = [];
   static {
     this.updateLocalStorage = () => {
       localStorage.setItem('bookCollection', JSON.stringify(MyBook.listOfBook));
@@ -78,6 +78,7 @@ const addNewBookEvent = () => {
       const title = event.target.elements[0].value;
       const author = event.target.elements[1].value;
       const myNewBook = new MyBook(title, author);
+      MyBook.unRender.push(myNewBook);
       event.target.elements[0].value = '';
       event.target.elements[1].value = '';
     });

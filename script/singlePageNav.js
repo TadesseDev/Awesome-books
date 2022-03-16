@@ -4,7 +4,6 @@ let nav = null;
 let addBook = null;
 let ListOfBooks = null;
 let contactInfo = null;
-
 const swapSection = (section) => {
   console.log(section);
   contactInfo.remove();
@@ -13,8 +12,11 @@ const swapSection = (section) => {
   body.insertBefore(section, footer);
   if (section === addBook) {
     addNewBookEvent();
-  } else if (section === ListOfBooks) {
-    updateBookList();
+  } else if (section === ListOfBooks && MyBook.unRender.length > 0) {
+    MyBook.unRender.forEach(book => {
+      book.addBookToDom();
+    });
+    MyBook.unRender = [];
   }
 }
 
