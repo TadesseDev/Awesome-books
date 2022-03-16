@@ -75,10 +75,12 @@ const addNewBookEvent = () => {
       event.preventDefault();
       const title = event.target.elements[0].value;
       const author = event.target.elements[1].value;
-      const myNewBook = new MyBook(title, author);
-      MyBook.unRender.push(myNewBook);
-      event.target.elements[0].value = '';
-      event.target.elements[1].value = '';
+      if (title != '') {
+        const myNewBook = new MyBook(title, author);
+        MyBook.unRender.push(myNewBook);
+        event.target.elements[0].value = '';
+        event.target.elements[1].value = '';
+      }
     });
   } catch (e) {
     console.log(e);
@@ -107,8 +109,10 @@ const swapSection = (section) => {
   ListOfBooks.remove();
   addBook.remove();
   body.insertBefore(section, footer);
+  console.log('attaching event');
   if (section === addBook) {
     addNewBookEvent();
+    console.log('attaching event');
   } else if (section === ListOfBooks && MyBook.unRender.length > 0) {
     MyBook.unRender.forEach((book) => {
       book.addBookToDom();
