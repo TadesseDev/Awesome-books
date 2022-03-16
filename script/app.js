@@ -61,17 +61,31 @@ class MyBook {
   };
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const newBook = document.querySelector('#newBook');
-  newBook.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const title = event.target.elements[0].value;
-    const author = event.target.elements[1].value;
-    const myNewBook = new MyBook(title, author);
-    myNewBook.addBookToDom(); // append book to the DOM
-    event.target.elements[0].value = '';
-    event.target.elements[1].value = '';
+const updateBookList = () => {
+  const bookData = JSON.parse(localStorage.getItem('bookCollection'));
+  bookData.forEach((bookData) => {
+    const newBook = new MyBook(bookData.title, bookData.author, bookData.id);
+    newBook.addBookToDom(); // append book to the DOM
   });
+}
+
+const addNewBookEvent = () => {
+  try {
+    let newBook = document.querySelector('#newBook');
+    console.log(newBook);
+    newBook.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const title = event.target.elements[0].value;
+      const author = event.target.elements[1].value;
+      const myNewBook = new MyBook(title, author);
+      event.target.elements[0].value = '';
+      event.target.elements[1].value = '';
+    });
+  } catch (e) {
+    console.log(e)
+  }
+}
+document.addEventListener('DOMContentLoaded', () => {
   if (!localStorage.getItem('bookCollection')) {
     try {
       localStorage.setItem('bookCollection', JSON.stringify([]));
@@ -79,10 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('failed to create local storage');
     }
   } else {
-    const bookData = JSON.parse(localStorage.getItem('bookCollection'));
-    bookData.forEach((bookData) => {
-      const newBook = new MyBook(bookData.title, bookData.author, bookData.id);
-      newBook.addBookToDom(); // append book to the DOM
-    });
+    updateBookList();
   }
 });

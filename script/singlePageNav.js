@@ -1,12 +1,21 @@
-
 let body = null;
 let footer = null;
 let nav = null;
 let addBook = null;
 let ListOfBooks = null;
-const createHomePage = () => {
-  addBook.remove();
+let contactInfo = null;
 
+const swapSection = (section) => {
+  console.log(section);
+  contactInfo.remove();
+  ListOfBooks.remove();
+  addBook.remove();
+  body.insertBefore(section, footer);
+  if (section === addBook) {
+    addNewBookEvent();
+  } else if (section === ListOfBooks) {
+    updateBookList();
+  }
 }
 
 const getNewBookSection = () => {
@@ -23,15 +32,37 @@ const getNewBookSection = () => {
 }
 
 const getContactInfo = () => {
-
+  const contactInfoSection = document.createElement('section');
+  contactInfoSection.setAttribute('id', 'contact-info');
+  contactInfoSection.innerHTML = `
+<h2 id="contact-info-title">Contact Information</h2>
+<p>Do you have any questions or you just want to say "Hello"? <br> You can reach out to us!</p>
+<ul>
+  <li>Our e-mail: mail@mail.com</li>
+  <li>Our phone number: 0043586534422</li>
+  <li>Our address: Streetname 22, 84503 City, Country</li>
+</ul>
+`;
+  return contactInfoSection;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   body = document.querySelector('body');
-  footer = document.getElementById('contact-info');
+  footer = document.getElementById('footer-container');
   nav = document.getElementById('navbar-container');
   ListOfBooks = document.getElementById('list-of-books');
   addBook = getNewBookSection();
-  body.insertBefore(addBook, footer);
-  // createHomePage();
+  contactInfo = getContactInfo();
+  const navLinks = nav.querySelectorAll('a');
+  for (let link of navLinks)
+    link.addEventListener('click', (event) => {
+      let sectionName = link.getAttribute('href').replace('#', '');
+      if (sectionName === 'ListOfBooks')
+        swapSection(ListOfBooks);
+      else if (sectionName === 'addBook')
+        swapSection(addBook);
+      else
+        swapSection(contactInfo);
+    });
+    // console.log(link.getAttribute('href').replace('#', ''));
 });
