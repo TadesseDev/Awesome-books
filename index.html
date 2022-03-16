@@ -23,14 +23,15 @@
 </head>
 <body>
   <nav id="navbar-container">
-    <!-- <h2 id="navbar-title">Awesome Book</h2> -->
+    <h2 id="navbar-title">Awesome Books</h2>
 `    <ul class="navbar-ul">
       <li class="navbar-li"><a href="#">List</a></li>
-      <li class="navbar-li"><a href="#">Add new</a></li>
+      <li class="navbar-li"><a id="nav-add-new-text" href="#">Add new</a></li>
       <li class="navbar-li"><a href="#">Contact</a></li>
     </ul>
-    <!-- <p id="navbar-date">Wed March-16</p>  -->
   </nav>
+  <p id="navbar-date">Wed March-16</p> 
+
 <section id="list-of-books">
     <section class="main-text">
     <h1 id="main-header-text"> All awesome books</h1>
@@ -45,14 +46,12 @@
 <!-- Database of all the books end here  -->
 
 <!-- Seperator line for book database and add new book feature  -->
-<hr/>
 <br>
 <!-- Seperator line for book database and add new book feature  -->
 
 <!-- Add New Book Section starts here  -->
 <section id="new-book-section"> 
   <h2 class="new-book-text"> Add a New Book</h2>
-  <i class="fa-solid fa-book-open book-icon"></i> 
 <form action="#" id="newBook">
   <input type="text" id="title" name="title" placeholder="Title" required minlength="2" maxlength="100">
   <input type="text" id="author" name="author" placeholder="Author" required minlength="2" maxlength="100">

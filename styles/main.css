@@ -12,7 +12,7 @@ body {
   margin: 10px;
   display: flex;
   justify-content: space-between;
-  /* justify-content: space-around; */
+  padding: 0.1px 10px 0.1px 10px;
 }
 
 .navbar-ul {
@@ -23,6 +23,20 @@ body {
 
 .navbar-li a {
   text-decoration: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #000;
+}
+
+#nav-add-new-text {
+  border-left: 2px solid #000;
+  border-right: 2px solid black;
+}
+
+#navbar-date {
+  text-align: right;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 /* navbar section styles ends here  */
@@ -115,9 +129,3 @@ body {
   margin: 5px;
 }
 
-hr {
-  max-width: 30%;
-  margin: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
