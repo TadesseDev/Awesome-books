@@ -134,7 +134,9 @@ body {
 /* ..........................................the footer section style starts here.................................................... */
 footer {
   border: 2px solid black;
-  margin: 10px;
+  margin-top: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
   padding-left: 20px;
 }
 
