@@ -1,6 +1,7 @@
 // every book isInstance of a book class;
 class MyBook {
   static listOfBook = [];
+
   static unRender = [];
 
   static {
