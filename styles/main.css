@@ -15,6 +15,12 @@ body {
   padding: 0.1px 10px 0.1px 10px;
 }
 
+#navbar-title {
+  margin-bottom: 5px;
+  margin-top: 5px;
+  align-self: center;
+}
+
 .navbar-ul {
   display: flex;
   list-style: none;
@@ -23,8 +29,8 @@ body {
 
 .navbar-li a {
   text-decoration: none;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
   color: #000;
 }
 
