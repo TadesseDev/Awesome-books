@@ -11,15 +11,18 @@ class MyBook {
       this.updateLocalStorage();
     };
     this.removeBookFomList = (bookToRemove) => {
-      this.listOfBook = this.listOfBook.filter((book) => book.id !== bookToRemove.id);
+      this.listOfBook = this.listOfBook.filter((book) => {
+        console.log(book.title);
+        return book.id !== bookToRemove.id
+      });
       this.updateLocalStorage();
     };
   }
 
-  constructor(title, author) {
+  constructor(title, author, id = String(Date.now())) {
     this.title = title;
     this.author = author;
-    this.id = String(Date.now());
+    this.id = id;
     this.addBook(); // add book to Book list
   }
 
@@ -78,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     const bookData = JSON.parse(localStorage.getItem('bookCollection'));
     bookData.forEach((bookData) => {
-      const newBook = new MyBook(bookData.title, bookData.author);
+      const newBook = new MyBook(bookData.title, bookData.author, bookData.id);
       newBook.addBookToDom(); // append book to the DOM
     });
   }
