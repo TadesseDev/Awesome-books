@@ -1,7 +1,7 @@
 let nav = null;
 let listOfBooks = null;
 let storeBooks = null;
-const emptyBookListPlaceHolder = '<p id=\'book-list-empty\'> Your Books list is empty, you can click to add some books</p>';
+const emptyBookListPlaceHolder = `<p id='book-list-empty'> Your Books list is empty, you can <a href='#new-book-section' onclick='AddSwapEvenForLinks(this)'>click here</a> to add new</p>`;
 
 // update any section with a given HTML
 const updateSectionWithInnerHtml = (section, innerHTML) => {
@@ -102,6 +102,15 @@ const swapSection = (newActiveSection) => {
   newActiveSection.classList.add('active');
 };
 
+// associate event for the nav links and other elements if needed
+function AddSwapEvenForLinks(NavLink) {
+  NavLink.addEventListener('click', (event) => {
+    event.preventDefault();
+    const sectionName = NavLink.getAttribute('href').replace('#', '');
+    swapSection(document.getElementById(sectionName));
+  });
+}
+
 // as as document becomes ready the following activity get executed
 document.addEventListener('DOMContentLoaded', () => {
   // find and update local storage elements
@@ -123,17 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // associate event for the add new book form
   addNewBookEvent();
 
-  // associate event for the nav links
-  function AddSwapEvenForNavLinks(NavLink) {
-    NavLink.addEventListener('click', (event) => {
-      event.preventDefault();
-      const sectionName = NavLink.getAttribute('href').replace('#', '');
-      swapSection(document.getElementById(sectionName));
-    });
-  }
-
   for (let i = 0; i < navLinks.length; i += 1) {
     const link = navLinks[i];
-    AddSwapEvenForNavLinks(link);
+    AddSwapEvenForLinks(link);
   }
 });
