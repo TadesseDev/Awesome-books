@@ -4,8 +4,23 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
+  height: 100%;
 }
-
+body{
+  display: grid;
+  grid-template-rows: max-content;
+}
+body > section{
+  display: none;
+}
+body > section.active{
+  display: block;
+}
+footer{
+  height: max-content;
+  margin-top: 20px;
+  align-self: end;
+}
 /* ..................................................navbar section styles starts here ..................................... */
 #navbar-container {
   border: 2px solid #000;
@@ -148,10 +163,6 @@ body {
 footer {
   border: 2px solid black;
   padding-left: 20px;
-  position: fixed;
-  bottom: 0.1px;
-  left: 10px;
-  right: 10px;
   margin-bottom: 10px;
 }
 
