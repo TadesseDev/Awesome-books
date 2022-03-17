@@ -1,7 +1,7 @@
 let nav = null;
 let listOfBooks = null;
 let storeBooks = null;
-const emptyBookListPlaceHolder = `<p id='book-list-empty'> Your Books list is empty, you can <a href='#new-book-section' onclick='AddSwapEvenForLinks(this)'>click here</a> to add new</p>`;
+const emptyBookListPlaceHolder = '<p id=\'book-list-empty\'> Your Books list is empty, you can <a href=\'#new-book-section\' onclick=\'AddSwapEvenForLinks(this)\'>click here</a> to add new</p>';
 
 // update any section with a given HTML
 const updateSectionWithInnerHtml = (section, innerHTML) => {
