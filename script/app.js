@@ -3,7 +3,8 @@ let nav = null;
 let addBook = null;
 let ListOfBooks = null;
 let contactInfo = null;
-
+let storeBooks = null;
+const emptyBookListPlaceHolder = `<p> you'r list of book is empty</p>`
 class MyBook {
   static listOfBook = [];
 
@@ -39,7 +40,8 @@ class MyBook {
   }
 
   addBookToDom = () => {
-    const storeBooks = document.querySelector('#storeBooks');
+
+    storeBooks = storeBooks ? storeBooks : document.querySelector('#storeBooks');
     const bookForm = document.createElement('form');
     bookForm.setAttribute('id', this.id);
     const titleContainer = document.createElement('p');
@@ -62,6 +64,9 @@ class MyBook {
   removeBookFromDom = (storeBooks) => {
     const book = document.getElementById(`${this.id}`);
     storeBooks.removeChild(book);
+    if (storeBooks.childElementCount === 0) {
+      updateSectionWithInnerHtml(storeBooks, emptyBookListPlaceHolder);
+    }
   };
 }
 
@@ -92,6 +97,9 @@ const swapSection = (newActiveSection) => {
   newActiveSection.classList.add('active');
 };
 
+const updateSectionWithInnerHtml = (section, innerHTML) => {
+  section.innerHTML = innerHTML;
+}
 // as as document becomes ready the following activity get executed
 document.addEventListener('DOMContentLoaded', () => {
   // find and update local storage elements
@@ -106,11 +114,12 @@ document.addEventListener('DOMContentLoaded', () => {
   ListOfBooks = document.getElementById('list-of-books');
   addBook = document.getElementById('new-book-section');
   contactInfo = document.getElementById('footer-container');
+  storeBooks = document.querySelector('#storeBooks');
   const navLinks = nav.querySelectorAll('a');
   ListOfBooks.classList.add('active');
-
-  console.log(ListOfBooks.innerText);
-
+  if (storeBooks.childElementCount === 0) {
+    updateSectionWithInnerHtml(storeBooks, emptyBookListPlaceHolder);
+  }
   // associate event for the add new book form
   addNewBookEvent();
 
