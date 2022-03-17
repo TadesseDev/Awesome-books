@@ -27,9 +27,9 @@
   <nav id="navbar-container">
     <h2 id="navbar-title">Awesome Books</h2>
 `    <ul class="navbar-ul">
-      <li class="navbar-li"><a href="#ListOfBooks">List</a></li>
-      <li class="navbar-li"><a id="nav-add-new-text" href="#addBook">Add new</a></li>
-      <li class="navbar-li"><a href="#contactInfo">Contact</a></li>
+      <li class="navbar-li"><a href="#list-of-books">List</a></li>
+      <li class="navbar-li"><a id="nav-add-new-text" href="#new-book-section">Add new</a></li>
+      <li class="navbar-li"><a href="#contact-info">Contact</a></li>
     </ul>
   </nav>
   <p id="navbar-date">Wed March-16</p> 
@@ -48,7 +48,24 @@
 </section>
 <!-- Database of all the books end here  -->
 
+<section id="new-book-section">
+    <h2 class="new-book-text"> Add a New Book</h2>
+    <form action="#" id="newBook">
+      <input type="text" id="title" name="title" placeholder="Title" required minlength="2" maxlength="100">
+        <input type="text" id="author" name="author" placeholder="Author" required minlength="2" maxlength="100">
+          <button type="submit" id="addBook">Add</button>
+        </form>
+</section>
 
+<section id="contact-info">
+<h2 id="contact-info-title">Contact Information</h2>
+<p>Do you have any questions or you just want to say "Hello"? <br> You can reach out to us!</p>
+<ul>
+  <li>Our e-mail: email24t@gmail.com</li>
+  <li>Our phone number: +251921577930</li>
+  <li>Our address: Streetname 22, 84503 City, Country</li>
+</ul>
+</section>
 <!-- footer starts here  -->
 <footer id="footer-container">
 <p id="footer-text">Copyright</p>
