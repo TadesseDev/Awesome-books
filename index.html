@@ -22,35 +22,38 @@
 
 </head>
 <body>
-  <section class="main-text">
+
+<!-- navbar section starts here  -->
+  <nav id="navbar-container">
+    <h2 id="navbar-title">Awesome Books</h2>
+`    <ul class="navbar-ul">
+      <li class="navbar-li"><a href="#ListOfBooks">List</a></li>
+      <li class="navbar-li"><a id="nav-add-new-text" href="#addBook">Add new</a></li>
+      <li class="navbar-li"><a href="#contactInfo">Contact</a></li>
+    </ul>
+  </nav>
+  <p id="navbar-date">Wed March-16</p> 
+ <!-- navbar section ends here  -->
+
+ <!-- List of books section starts here  -->
+<section id="list-of-books">
+    <div class="main-text">
     <h1 id="main-header-text"> All awesome books</h1>
-    <!-- <i class="fa-solid fa-book book-icon"></i> -->
-  </section>
-  
+    </div>
+<!-- List of books section ends here  -->
 
 <!-- Database of all the books starts here -->
-  <section id="storeBooks">
-  </section>
+  <article id="storeBooks">
+  </article>
+</section>
 <!-- Database of all the books end here  -->
 
-<!-- Seperator line for book database and add new book feature  -->
-<hr/>
-<br>
-<!-- Seperator line for book database and add new book feature  -->
 
-<!-- Add New Book Section starts here  -->
-<section class="new-book-section"> 
-  <h2 class="new-book-text"> Add a New Book</h2>
-  <i class="fa-solid fa-book-open book-icon"></i> 
-<form action="#" id="newBook">
-  <input type="text" id="title" name="title" placeholder="Title" required minlength="2" maxlength="100">
-  <input type="text" id="author" name="author" placeholder="Author" required minlength="2" maxlength="100">
-  <button type="submit" id="addBook">Add</button>
-</form>
-</section>
-
-<!-- Add New Book section ends here -->
-
+<!-- footer starts here  -->
+<footer id="footer-container">
+<p id="footer-text">Copyright</p>
+</footer>
+<!-- footer ends here  -->
 <script src="script/app.js"></script>
 </body>
 </html>
