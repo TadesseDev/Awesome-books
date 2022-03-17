@@ -92,29 +92,39 @@ const swapSection = (newActiveSection) => {
   newActiveSection.classList.add('active');
 };
 
+// as as document becomes ready the following activity get executed
 document.addEventListener('DOMContentLoaded', () => {
+  // find and update local storage elements
   if (!localStorage.getItem('bookCollection')) {
     localStorage.setItem('bookCollection', JSON.stringify([]));
   } else {
     updateBookList();
   }
+
+  // Initialize document objects
   nav = document.getElementById('navbar-container');
   ListOfBooks = document.getElementById('list-of-books');
   addBook = document.getElementById('new-book-section');
   contactInfo = document.getElementById('footer-container');
   const navLinks = nav.querySelectorAll('a');
   ListOfBooks.classList.add('active');
+
+  console.log(ListOfBooks.innerText);
+
+  // associate event for the add new book form
   addNewBookEvent();
-  function swapSectionEvent(element) {
-    element.addEventListener('click', (event) => {
+
+  //associate event for the nav links
+  function AddSwapEvenForNavLinks(NavLink) {
+    NavLink.addEventListener('click', (event) => {
       event.preventDefault();
-      const sectionName = element.getAttribute('href').replace('#', '');
-      console.log(sectionName);
+      const sectionName = NavLink.getAttribute('href').replace('#', '');
       swapSection(document.getElementById(sectionName));
     });
   }
+
   for (let i = 0; i < navLinks.length; i += 1) {
     const link = navLinks[i];
-    swapSectionEvent(link);
+    AddSwapEvenForNavLinks(link);
   }
 });
