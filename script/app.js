@@ -1,10 +1,11 @@
-// every book isInstance of a book class;
+
 let nav = null;
-let addBook = null;
 let ListOfBooks = null;
 let contactInfo = null;
 let storeBooks = null;
-const emptyBookListPlaceHolder = `<p id='book-list-empty'> you'r list of book is empty</p>`
+const emptyBookListPlaceHolder = '<p id=\'book-list-empty\'> you\'r list of book is empty</p>';
+
+// every book is Instance of a book class;
 class MyBook {
   static listOfBook = [];
 
@@ -40,7 +41,7 @@ class MyBook {
   }
 
   addBookToDom = () => {
-    storeBooks = storeBooks ? storeBooks : document.querySelector('#storeBooks');
+    storeBooks = storeBooks || document.querySelector('#storeBooks');
     const placeHolder = document.getElementById('book-list-empty');
     if (placeHolder) {
       placeHolder.remove();
@@ -89,7 +90,7 @@ const addNewBookEvent = () => {
     const author = event.target.elements[1].value;
     const myNewBook = new MyBook(title, author);
     myNewBook.addBookToDom();
-      event.target.elements[0].value = '';
+    event.target.elements[0].value = '';
     event.target.elements[1].value = '';
   });
 };
@@ -102,7 +103,7 @@ const swapSection = (newActiveSection) => {
 
 const updateSectionWithInnerHtml = (section, innerHTML) => {
   section.innerHTML = innerHTML;
-}
+};
 // as as document becomes ready the following activity get executed
 document.addEventListener('DOMContentLoaded', () => {
   // find and update local storage elements
@@ -126,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // associate event for the add new book form
   addNewBookEvent();
 
-  //associate event for the nav links
+  // associate event for the nav links
   function AddSwapEvenForNavLinks(NavLink) {
     NavLink.addEventListener('click', (event) => {
       event.preventDefault();
