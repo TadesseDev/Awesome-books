@@ -9,8 +9,6 @@ const emptyBookListPlaceHolder = '<p id=\'book-list-empty\'> you\'r list of book
 class MyBook {
   static listOfBook = [];
 
-  static unRender = [];
-
   static {
     this.updateLocalStorage = () => {
       localStorage.setItem('bookCollection', JSON.stringify(MyBook.listOfBook));
@@ -104,6 +102,7 @@ const swapSection = (newActiveSection) => {
 const updateSectionWithInnerHtml = (section, innerHTML) => {
   section.innerHTML = innerHTML;
 };
+
 // as as document becomes ready the following activity get executed
 document.addEventListener('DOMContentLoaded', () => {
   // find and update local storage elements
