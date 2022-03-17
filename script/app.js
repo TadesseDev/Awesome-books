@@ -4,7 +4,7 @@ let addBook = null;
 let ListOfBooks = null;
 let contactInfo = null;
 let storeBooks = null;
-const emptyBookListPlaceHolder = `<p> you'r list of book is empty</p>`
+const emptyBookListPlaceHolder = `<p id='book-list-empty'> you'r list of book is empty</p>`
 class MyBook {
   static listOfBook = [];
 
@@ -40,8 +40,11 @@ class MyBook {
   }
 
   addBookToDom = () => {
-
     storeBooks = storeBooks ? storeBooks : document.querySelector('#storeBooks');
+    const placeHolder = document.getElementById('book-list-empty');
+    if (placeHolder) {
+      placeHolder.remove();
+    }
     const bookForm = document.createElement('form');
     bookForm.setAttribute('id', this.id);
     const titleContainer = document.createElement('p');
