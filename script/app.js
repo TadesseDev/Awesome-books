@@ -1,9 +1,12 @@
-
 let nav = null;
-let ListOfBooks = null;
-let contactInfo = null;
+let listOfBooks = null;
 let storeBooks = null;
 const emptyBookListPlaceHolder = '<p id=\'book-list-empty\'> you\'r list of book is empty</p>';
+
+// update any section with a given HTML
+const updateSectionWithInnerHtml = (section, innerHTML) => {
+  section.innerHTML = innerHTML;
+};
 
 // every book is Instance of a book class;
 class MyBook {
@@ -99,10 +102,6 @@ const swapSection = (newActiveSection) => {
   newActiveSection.classList.add('active');
 };
 
-const updateSectionWithInnerHtml = (section, innerHTML) => {
-  section.innerHTML = innerHTML;
-};
-
 // as as document becomes ready the following activity get executed
 document.addEventListener('DOMContentLoaded', () => {
   // find and update local storage elements
@@ -114,12 +113,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize document objects
   nav = document.getElementById('navbar-container');
-  ListOfBooks = document.getElementById('list-of-books');
-  addBook = document.getElementById('new-book-section');
-  contactInfo = document.getElementById('footer-container');
+  listOfBooks = document.getElementById('list-of-books');
   storeBooks = document.querySelector('#storeBooks');
   const navLinks = nav.querySelectorAll('a');
-  ListOfBooks.classList.add('active');
+  listOfBooks.classList.add('active');
   if (storeBooks.childElementCount === 0) {
     updateSectionWithInnerHtml(storeBooks, emptyBookListPlaceHolder);
   }
