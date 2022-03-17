@@ -1,6 +1,4 @@
 // every book isInstance of a book class;
-let body = null;
-let footer = null;
 let nav = null;
 let addBook = null;
 let ListOfBooks = null;
@@ -100,8 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     updateBookList();
   }
-  body = document.querySelector('body');
-  footer = document.getElementById('footer-container');
   nav = document.getElementById('navbar-container');
   ListOfBooks = document.getElementById('list-of-books');
   addBook = document.getElementById('new-book-section');
