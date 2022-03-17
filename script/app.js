@@ -1,7 +1,7 @@
 let nav = null;
 let listOfBooks = null;
 let storeBooks = null;
-const emptyBookListPlaceHolder = '<p id=\'book-list-empty\'> you\'r list of book is empty</p>';
+const emptyBookListPlaceHolder = '<p id=\'book-list-empty\'> Your Books list is empty, you can click to add some books</p>';
 
 // update any section with a given HTML
 const updateSectionWithInnerHtml = (section, innerHTML) => {
