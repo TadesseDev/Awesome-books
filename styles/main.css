@@ -4,6 +4,20 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
+  height: 100%;
+}
+
+body {
+  display: grid;
+  grid-template-rows: max-content;
+}
+
+body > section {
+  display: none;
+}
+
+body > section.active {
+  display: block;
 }
 
 /* ..................................................navbar section styles starts here ..................................... */
@@ -148,11 +162,10 @@ body {
 footer {
   border: 2px solid black;
   padding-left: 20px;
-  position: fixed;
-  bottom: 0.1px;
-  left: 10px;
-  right: 10px;
   margin-bottom: 10px;
+  height: max-content;
+  margin-top: 20px;
+  align-self: end;
 }
 
 #footer-text {
@@ -161,3 +174,8 @@ footer {
 }
 
 /* ..................................................the footer section style starts here.................................. */
+#book-list-empty {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
