@@ -3,10 +3,58 @@ let listOfBooks = null;
 let storeBooks = null;
 const emptyBookListPlaceHolder = '<p id=\'book-list-empty\'> Your Books list is empty, you can <a href=\'#new-book-section\' onclick=\'AddSwapEvenForLinks(this)\'>click here</a> to add new</p>';
 
+//functions 
+const updateBookListFromLocalStorage = () => {
+  const bookData = JSON.parse(localStorage.getItem('bookCollection'));
+  bookData.forEach((bookData) => {
+    const newBook = new MyBook(bookData.title, bookData.author, bookData.id);
+    newBook.addBookToDom(); // append book to the DOM
+  });
+};
+
+const prepareLocalStorage = () => {
+  // find and update local storage elements
+  if (!localStorage.getItem('bookCollection')) {
+    localStorage.setItem('bookCollection', JSON.stringify([]));
+  } else {
+    updateBookListFromLocalStorage();
+  }
+}
+
+const addNewBookEvent = () => {
+  const newBook = document.querySelector('#newBook');
+  newBook.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const title = event.target.elements[0].value;
+    const author = event.target.elements[1].value;
+    const myNewBook = new MyBook(title, author);
+    myNewBook.addBookToDom();
+    event.target.elements[0].value = '';
+    event.target.elements[1].value = '';
+  });
+};
+
+const swapSection = (newActiveSection) => {
+  const oldActiveSection = document.querySelector('section.active');
+  oldActiveSection.classList.toggle('active');
+  newActiveSection.classList.add('active');
+};
+
+// associate event for the nav links and other elements if needed
+function AddSwapEvenForLinks(NavLink) {
+  NavLink.addEventListener('click', function (event) {
+    event.preventDefault();
+    const sectionName = this.getAttribute('href').replace('#', '');
+    swapSection(document.getElementById(sectionName));
+  });
+}
+
 // update any section with a given HTML
 const updateSectionWithInnerHtml = (section, innerHTML) => {
   section.innerHTML = innerHTML;
 };
+
+//functions 
 
 // every book is Instance of a book class;
 class MyBook {
@@ -75,51 +123,10 @@ class MyBook {
   };
 }
 
-const updateBookList = () => {
-  const bookData = JSON.parse(localStorage.getItem('bookCollection'));
-  bookData.forEach((bookData) => {
-    const newBook = new MyBook(bookData.title, bookData.author, bookData.id);
-    newBook.addBookToDom(); // append book to the DOM
-  });
-};
-
-const addNewBookEvent = () => {
-  const newBook = document.querySelector('#newBook');
-  newBook.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const title = event.target.elements[0].value;
-    const author = event.target.elements[1].value;
-    const myNewBook = new MyBook(title, author);
-    myNewBook.addBookToDom();
-    event.target.elements[0].value = '';
-    event.target.elements[1].value = '';
-  });
-};
-
-const swapSection = (newActiveSection) => {
-  const oldActiveSection = document.querySelector('section.active');
-  oldActiveSection.classList.toggle('active');
-  newActiveSection.classList.add('active');
-};
-
-// associate event for the nav links and other elements if needed
-function AddSwapEvenForLinks(NavLink) {
-  NavLink.addEventListener('click', (event) => {
-    event.preventDefault();
-    const sectionName = NavLink.getAttribute('href').replace('#', '');
-    swapSection(document.getElementById(sectionName));
-  });
-}
-
 // as as document becomes ready the following activity get executed
 document.addEventListener('DOMContentLoaded', () => {
   // find and update local storage elements
-  if (!localStorage.getItem('bookCollection')) {
-    localStorage.setItem('bookCollection', JSON.stringify([]));
-  } else {
-    updateBookList();
-  }
-
+  prepareLocalStorage();
   // Initialize document objects
   nav = document.getElementById('navbar-container');
   listOfBooks = document.getElementById('list-of-books');
