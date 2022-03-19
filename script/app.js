@@ -1,6 +1,8 @@
 let nav = null;
 let listOfBooks = null;
 let storeBooks = null;
+let addBookForm = null;
+let navLinks = null;
 const emptyBookListPlaceHolder = '<p id=\'book-list-empty\'> Your Books list is empty, you can <a href=\'#new-book-section\' onclick=\'AddSwapEvenForLinks(this)\'>click here</a> to add new</p>';
 
 //functions 
@@ -21,8 +23,8 @@ const prepareLocalStorage = () => {
   }
 }
 
-const addNewBookEvent = () => {
-  const newBook = document.querySelector('#newBook');
+const addNewBookEvent = (form) => {
+  const newBook = form;
   newBook.addEventListener('submit', (event) => {
     event.preventDefault();
     const title = event.target.elements[0].value;
@@ -131,13 +133,14 @@ document.addEventListener('DOMContentLoaded', () => {
   nav = document.getElementById('navbar-container');
   listOfBooks = document.getElementById('list-of-books');
   storeBooks = document.querySelector('#storeBooks');
-  const navLinks = nav.querySelectorAll('a');
+  addBookForm = document.querySelector('#newBook');
+  navLinks = nav.querySelectorAll('a');
+  // associate event for the add new book form
+  addNewBookEvent(addBookForm);
   listOfBooks.classList.add('active');
   if (storeBooks.childElementCount === 0) {
     updateSectionWithInnerHtml(storeBooks, emptyBookListPlaceHolder);
   }
-  // associate event for the add new book form
-  addNewBookEvent();
 
   for (let i = 0; i < navLinks.length; i += 1) {
     const link = navLinks[i];
